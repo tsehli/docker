@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  
+  portainer:
+    build: ./portainer
+    container_name: "portainer"
+    command: -H unix:///var/run/docker.sock
+    networks:
+      - local
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer/data:/data
+    ports:
+        - "9000:9000"
+    restart: always
+
+  rabbit:
+    build: ./rabbit
+    networks:
+      - local
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+
+networks:
+  local:
+    driver: bridge
