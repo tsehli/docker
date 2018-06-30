@@ -1,3 +1,3 @@
 This is WIP.
 
-Docker dev emvironment setup
+Docker dev environment setup
