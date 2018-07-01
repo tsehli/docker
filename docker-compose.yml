@@ -17,11 +17,22 @@ services:
 
   rabbit:
     build: ./rabbit
+    container_name: "rabbitmq"
     networks:
       - local
     ports:
         - "5672:5672"
         - "15672:15672"
+  
+  cassandra:
+    build: ./cassandra
+    container_name: "cassandra"
+    networks:
+      - local
+    volumes:
+      - ./data/cassandra:/bitnami
+    ports:
+      - "9042:9042"
 
 networks:
   local:
