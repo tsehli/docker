@@ -1,1 +1,1 @@
-FROM bitnami/cassandra:latest
+FROM cassandra:latest
