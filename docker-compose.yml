@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 
 services:
   
@@ -17,12 +17,31 @@ services:
 
   rabbit:
     build: ./rabbit
+    container_name: "rabbitmq"
     networks:
       - local
     ports:
         - "5672:5672"
         - "15672:15672"
+  
+  cassandra:
+    build: ./cassandra
+    container_name: "cassandra"
+    networks:
+      - local
+    volumes:
+      - cassndra-data:/var/lib/cassandra
+    # environment:
+    ports:
+      # - '7000:7000'
+      # - '7001:7001'
+      - '9042:9042'
+      # - '9160:9160'
+
 
 networks:
   local:
     driver: bridge
+    
+volumes:
+  cassndra-data:
