@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 
 services:
   
@@ -30,7 +30,7 @@ services:
     networks:
       - local
     volumes:
-      - ./data/cassandra:/var/lib/cassandra
+      - cassndra-data:/var/lib/cassandra
     # environment:
     ports:
       # - '7000:7000'
@@ -42,3 +42,6 @@ services:
 networks:
   local:
     driver: bridge
+    
+volumes:
+  cassndra-data:
